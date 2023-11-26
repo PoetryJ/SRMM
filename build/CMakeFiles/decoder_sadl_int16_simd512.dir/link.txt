@@ -1,0 +1,1 @@
+/usr/bin/g++  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   CMakeFiles/decoder_sadl_int16_simd512.dir/decoder_int16.cpp.o CMakeFiles/decoder_sadl_int16_simd512.dir/range_coder.cpp.o CMakeFiles/decoder_sadl_int16_simd512.dir/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp.o  -o decoder_sadl_int16_simd512 

@@ -1,0 +1,127 @@
+[
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/encoder_sadl_int16_generic.dir/encoder_int16.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/encoder_int16.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/encoder_int16.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/encoder_sadl_int16_generic.dir/range_coder.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/encoder_sadl_int16_generic.dir/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp.o -c /home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp",
+  "file": "/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/decoder_sadl_int16_simd512.dir/decoder_int16.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/decoder_int16.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/decoder_int16.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/decoder_sadl_int16_simd512.dir/range_coder.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/decoder_sadl_int16_simd512.dir/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp.o -c /home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp",
+  "file": "/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/decoder_sadl_float_simd512.dir/decoder_float.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/decoder_float.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/decoder_float.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/decoder_sadl_float_simd512.dir/range_coder.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/decoder_sadl_float_simd512.dir/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp.o -c /home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp",
+  "file": "/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/encoder_sadl_float_simd512.dir/encoder_float.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/encoder_float.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/encoder_float.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/encoder_sadl_float_simd512.dir/range_coder.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/encoder_sadl_float_simd512.dir/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp.o -c /home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp",
+  "file": "/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/encoder_sadl_int16_simd512.dir/encoder_int16.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/encoder_int16.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/encoder_int16.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/encoder_sadl_int16_simd512.dir/range_coder.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -mavx512bw -mavx512f  -std=gnu++1z -o CMakeFiles/encoder_sadl_int16_simd512.dir/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp.o -c /home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp",
+  "file": "/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/encoder_sadl_float_generic.dir/encoder_float.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/encoder_float.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/encoder_float.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/encoder_sadl_float_generic.dir/range_coder.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/encoder_sadl_float_generic.dir/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp.o -c /home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp",
+  "file": "/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/extract_cdf.dir/extract_cdf.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/extract_cdf.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/extract_cdf.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/decoder_sadl_float_generic.dir/decoder_float.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/decoder_float.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/decoder_float.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/decoder_sadl_float_generic.dir/range_coder.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/decoder_sadl_float_generic.dir/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp.o -c /home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp",
+  "file": "/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/decoder_sadl_int16_generic.dir/decoder_int16.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/decoder_int16.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/decoder_int16.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/decoder_sadl_int16_generic.dir/range_coder.cpp.o -c /home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp",
+  "file": "/home/poetry/SRMM/compressai/sadl_codec/range_coder.cpp"
+},
+{
+  "directory": "/home/poetry/SRMM/build",
+  "command": "/usr/bin/g++   -I/home/poetry/SRMM/compressai/sadl_codec/../../sadl -I/home/poetry/SRMM/compressai/sadl_codec/../../third_party/range_coder  -O3 -ffast-math -Wall -fstrict-aliasing -DNDEBUG=1  -Wno-unused-function -g   -std=gnu++1z -o CMakeFiles/decoder_sadl_int16_generic.dir/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp.o -c /home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp",
+  "file": "/home/poetry/SRMM/third_party/range_coder/range_coder_impl.cpp"
+}
+]
