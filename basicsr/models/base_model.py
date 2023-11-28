@@ -33,7 +33,7 @@ class BaseModel():
         """Save networks and training state."""
         pass
 
-    def validation(self, dataloader, current_iter, tb_logger, save_img ,epoch, model, criterion):
+    def validation(self, dataloader, current_iter, tb_logger, save_img=False):
         """Validation function.
 
         Args:
@@ -43,9 +43,9 @@ class BaseModel():
             save_img (bool): Whether to save images. Default: False.
         """
         if self.opt['dist']:
-            self.dist_validation(dataloader, current_iter, tb_logger, save_img,epoch, model, criterion)
+            self.dist_validation(dataloader, current_iter, tb_logger, save_img)
         else:
-            self.nondist_validation(dataloader, current_iter, tb_logger, save_img,epoch, model, criterion)
+            self.nondist_validation(dataloader, current_iter, tb_logger, save_img)
 
     def _initialize_best_metric_results(self, dataset_name):
         """Initialize the best metric results dict for recording the best metric value and iteration."""

@@ -13,178 +13,6 @@ from basicsr.utils import (AvgTimer, MessageLogger, check_resume, get_env_info, 
                            init_tb_logger, init_wandb_logger, make_exp_dirs, mkdir_and_rename, scandir)
 from basicsr.utils.options import copy_opt_file, dict2str, parse_options
 
-import argparse
-import random
-import shutil
-import sys
-
-import torch
-import torch.nn as nn
-import torch.optim as optim
-
-from torch.utils.data import DataLoader
-from torchvision import transforms
-
-from compressai.datasets import ImageFolder
-from compressai.losses import RateDistortionLoss
-from compressai.optimizers import net_aux_optimizer
-from compressai.zoo import image_models
-
-
-class AverageMeter:
-    """Compute running average."""
-
-    def __init__(self):
-        self.val = 0
-        self.avg = 0
-        self.sum = 0
-        self.count = 0
-
-    def update(self, val, n=1):
-        self.val = val
-        self.sum += val * n
-        self.count += n
-        self.avg = self.sum / self.count
-
-
-class CustomDataParallel(nn.DataParallel):
-    """Custom DataParallel to access the module methods."""
-
-    def __getattr__(self, key):
-        try:
-            return super().__getattr__(key)
-        except AttributeError:
-            return getattr(self.module, key)
-
-
-def configure_optimizers(net, args):
-    """Separate parameters for the main optimizer and the auxiliary optimizer.
-    Return two optimizers"""
-    conf = {
-        "net": {"type": "Adam", "lr": args.learning_rate},
-        "aux": {"type": "Adam", "lr": args.aux_learning_rate},
-    }
-    optimizer = net_aux_optimizer(net, conf)
-    return optimizer["net"], optimizer["aux"]
-
-
-
-def test_epoch(epoch, test_dataloader, model,net, criterion):
-    model.eval()
-    net.eval()
-    device = next(model.parameters()).device
-    device = next(net.parameters()).device
-
-    loss = AverageMeter()
-    bpp_loss = AverageMeter()
-    mse_loss = AverageMeter()
-    aux_loss = AverageMeter()
-
-    with torch.no_grad():
-        for d in test_dataloader:
-            d = d.to(device)
-            out1 = model(d)
-            out_net = net(out1)
-            out_criterion = criterion(out_net, d)
-
-            aux_loss.update(model.aux_loss())
-            bpp_loss.update(out_criterion["bpp_loss"])
-            loss.update(out_criterion["loss"])
-            mse_loss.update(out_criterion["mse_loss"])
-
-    print(
-        f"Test epoch {epoch}: Average losses:"
-        f"\tLoss: {loss.avg:.3f} |"
-        f"\tMSE loss: {mse_loss.avg:.3f} |"
-        f"\tBpp loss: {bpp_loss.avg:.2f} |"
-        f"\tAux loss: {aux_loss.avg:.2f}\n"
-    )
-
-    return loss.avg
-
-
-def save_checkpoint(state, is_best, filename="checkpoint.pth.tar"):
-    torch.save(state, filename)
-    if is_best:
-        shutil.copyfile(filename, "checkpoint_best_loss.pth.tar")
-
-
-def parse_args(argv):
-    parser = argparse.ArgumentParser(description="Example training script.")
-    parser.add_argument(
-        "-m",
-        "--model",
-        default="cheng2020_attn",
-        choices=image_models.keys(),
-        help="Model architecture (default: %(default)s)",
-    )
-    parser.add_argument(
-        "-d", "--dataset", type=str, required=True, help="Training dataset"
-    )
-    parser.add_argument(
-        "-e",
-        "--epochs",
-        default=100,
-        type=int,
-        help="Number of epochs (default: %(default)s)",
-    )
-    parser.add_argument(
-        "-lr",
-        "--learning-rate",
-        default=1e-5,
-        type=float,
-        help="Learning rate (default: %(default)s)",
-    )
-    parser.add_argument(
-        "-n",
-        "--num-workers",
-        type=int,
-        default=4,
-        help="Dataloaders threads (default: %(default)s)",
-    )
-    parser.add_argument(
-        "--lambda",
-        dest="lmbda",
-        type=float,
-        default=1e-2,
-        help="Bit-rate distortion parameter (default: %(default)s)",
-    )
-    parser.add_argument(
-        "--batch-size", type=int, default=16, help="Batch size (default: %(default)s)"
-    )
-    parser.add_argument(
-        "--test-batch-size",
-        type=int,
-        default=64,
-        help="Test batch size (default: %(default)s)",
-    )
-    parser.add_argument(
-        "--aux-learning-rate",
-        type=float,
-        default=1e-4,
-        help="Auxiliary loss learning rate (default: %(default)s)",
-    )
-    parser.add_argument(
-        "--patch-size",
-        type=int,
-        nargs=2,
-        default=(256, 256),
-        help="Size of the patches to be cropped (default: %(default)s)",
-    )
-    parser.add_argument("--cuda", action="store_true", help="Use cuda")
-    parser.add_argument(
-        "--save", action="store_true", default=True, help="Save model to disk"
-    )
-    
-    parser.add_argument(
-        "--clip_max_norm",
-        default=1.0,
-        type=float,
-        help="gradient clipping max norm (default: %(default)s",
-    )
-    parser.add_argument("--checkpoint", type=str, help="Path to a checkpoint")
-    args = parser.parse_args(argv)
-    return args
 
 def init_tb_loggers(opt):
     # initialize wandb logger before tensorboard logger to allow proper sync
@@ -264,9 +92,7 @@ def train_pipeline(root_path):
     # parse options, set distributed setting, set ramdom seed
     opt, args = parse_options(root_path, is_train=True)
     opt['root_path'] = root_path
-    amm = parse_args(sys.argv[1:])
 
-    
     torch.backends.cudnn.benchmark = True
     # torch.backends.cudnn.deterministic = True
 
@@ -293,31 +119,9 @@ def train_pipeline(root_path):
     # create train and validation dataloaders
     result = create_train_val_dataloader(opt, logger)
     train_loader, train_sampler, val_loaders, total_epochs, total_iters = result
-    
-    device = "cuda" if amm.cuda and torch.cuda.is_available() else "cpu"
+
     # create model
     model = build_model(opt)
-    net = image_models[amm.model](quality=3)
-    net = net.to(device)
-
-    if amm.cuda and torch.cuda.device_count() > 1:
-        net = CustomDataParallel(net)
-
-    optimizer, aux_optimizer = configure_optimizers(net, amm)
-    lr_scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, "min")
-    criterion = RateDistortionLoss(lmbda=amm.lmbda)
-
-    
-    if amm.checkpoint:  # load from previous checkpoint
-        print("Loading", amm.checkpoint)
-        checkpoint = torch.load(amm.checkpoint, map_location=device)
-        net.load_state_dict(checkpoint["state_dict"])
-        optimizer.load_state_dict(checkpoint["optimizer"])
-        aux_optimizer.load_state_dict(checkpoint["aux_optimizer"])
-        lr_scheduler.load_state_dict(checkpoint["lr_scheduler"])
-
-    best_loss = float("inf")
-
     if resume_state:  # resume training
         model.resume_training(resume_state)  # handle optimizers and schedulers
         logger.info(f"Resuming training from epoch: {resume_state['epoch']}, " f"iter: {resume_state['iter']}.")
@@ -362,7 +166,7 @@ def train_pipeline(root_path):
             model.update_learning_rate(current_iter, warmup_iter=opt['train'].get('warmup_iter', -1))
             # training
             model.feed_data(train_data)
-            model.optimize_parameters(current_iter,net,criterion,optimizer,aux_optimizer,epoch,amm.clip_max_norm)
+            model.optimize_parameters(current_iter)
             iter_timer.record()
             if current_iter == 1:
                 # reset start time in msg_logger for more accurate eta_time
@@ -375,35 +179,19 @@ def train_pipeline(root_path):
                 log_vars.update({'time': iter_timer.get_avg_time(), 'data_time': data_timer.get_avg_time()})
                 log_vars.update(model.get_current_log())
                 msg_logger(log_vars)
-                
-            
+
+            # save models and training states
+            if current_iter % opt['logger']['save_checkpoint_freq'] == 0:
+                logger.info('Saving models and training states.')
+                model.save(epoch, current_iter)
 
             # validation
             if opt.get('val') is not None and (current_iter % opt['val']['val_freq'] == 0):
                 if len(val_loaders) > 1:
                     logger.warning('Multiple validation datasets are *only* supported by SRModel.')
-                loss = test_epoch(epoch, val_loader,model,net,criterion)
-                lr_scheduler.step(loss)
-                is_best = loss < best_loss
-                best_loss = min(loss, best_loss)
-            
-            if amm.save:
-                save_checkpoint(
-                    {
-                        "epoch": epoch,
-                        "state_dict": net.state_dict(),
-                        "loss": loss,
-                        "optimizer": optimizer.state_dict(),
-                        "aux_optimizer": aux_optimizer.state_dict(),
-                        "lr_scheduler": lr_scheduler.state_dict(),
-                    },
-                    is_best,
-                )
-            # save models and training states
-            if current_iter % opt['logger']['save_checkpoint_freq'] == 0:
-                logger.info('Saving models and training states.')
-                model.save(epoch, current_iter)
-                
+                for val_loader in val_loaders:
+                    model.validation(val_loader, current_iter, tb_logger, opt['val']['save_img'])
+
             data_timer.start()
             iter_timer.start()
             train_data = prefetcher.next()

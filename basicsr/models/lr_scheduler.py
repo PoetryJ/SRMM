@@ -74,7 +74,7 @@ class CosineAnnealingRestartLR(_LRScheduler):
         last_epoch (int): Used in _LRScheduler. Default: -1.
     """
 
-    def __init__(self, optimizer, periods, restart_weights=(1, ), eta_min=0, last_epoch=-1):
+    def __init__(self, optimizer, periods = [1000000], restart_weights=(1, ), eta_min=1e-7, last_epoch=-1):
         self.periods = periods
         self.restart_weights = restart_weights
         self.eta_min = eta_min

@@ -265,8 +265,8 @@ def _load_model(
     if architecture not in model_architectures:
         raise ValueError(f'Invalid architecture name "{architecture}"')
 
-    if quality not in cfgs[architecture]:
-        raise ValueError(f'Invalid quality value "{quality}"')
+    # if quality not in cfgs[architecture]:
+    #     raise ValueError(f'Invalid quality value "{quality}"')
 
     if pretrained:
         if (

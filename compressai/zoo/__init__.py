@@ -34,8 +34,9 @@ from .image import (
     cheng2020_anchor,
     cheng2020_attn,
     mbt2018,
-    mbt2018_mean,
+    mbt2018_mean
 )
+
 from .pretrained import load_pretrained as load_state_dict
 from .video import ssf2020
 

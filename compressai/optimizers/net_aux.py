@@ -57,17 +57,18 @@ def net_aux_optimizer(
     }
 
     # Make sure we don't have an intersection of parameters
+    
     params_dict = dict(net.named_parameters())
-    inter_params = parameters["net"] & parameters["aux"]
-    union_params = parameters["net"] | parameters["aux"]
+    inter_params = parameters["net"] & parameters["aux"] 
+    union_params = parameters["net"] | parameters["aux"] 
     assert len(inter_params) == 0
     assert len(union_params) - len(params_dict.keys()) == 0
 
     def make_optimizer(key):
-        kwargs = dict(conf[key])
-        del kwargs["type"]
-        params = (params_dict[name] for name in sorted(parameters[key]))
-        return OPTIMIZERS[conf[key]["type"]](params, **kwargs)
+            kwargs = dict(conf[key])
+            del kwargs["type"]
+            params = (params_dict[name] for name in sorted(parameters[key]))
+            return OPTIMIZERS[conf[key]["type"]](params, **kwargs)
 
     optimizer = {key: make_optimizer(key) for key in ["net", "aux"]}
 
